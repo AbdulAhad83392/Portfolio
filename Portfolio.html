@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;700&family=Lobster&display=swap"
+        rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css" integrity="sha512-9xKTRVabjVeZmc+GUW8GgSmcREDunMM+Dt/GrzchfN8tkwHizc5RP4Ok/MXFFy5rIjJjzhndFScTceq5e6GvVQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>Portfolio</title>
+    <style>
+        h3 {
+            text-align: center;
+            font-family: 'Lobster', cursive;
+        }
+
+        h5,
+        .infotop {
+            font-family: 'Lobster', cursive;
+        }
+
+        body {
+            background: linear-gradient(purple, blue, purple, black);
+            font-family: 'Kanit', sans-serif;
+        }
+
+        .ahad {
+            background-image: url(https://scontent.fkhi11-1.fna.fbcdn.net/v/t39.30808-6/465012687_537696312337014_5022818428647530534_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeFwG0erlR-S_8cjUPnLJSjvSkVU_s2ln0dKRVT-zaWfR4GPnIbmdwN0Pq6t2Cs9YSC0eg3UskxnoV7LPPbqKN75&_nc_ohc=ELY7RniOmXAQ7kNvgH8IOqE&_nc_zt=23&_nc_ht=scontent.fkhi11-1.fna&_nc_gid=As155b304Ab4DPVeG2oijU_&oh=00_AYAsaZpbJ08ysDQ6abh6a_EoymNuK5WrWW0Jdk21-FfBWg&oe=6742C01A);
+            clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 70vh;
+        }
+
+        .a {
+            background: linear-gradient(purple, blue, black);
+        }
+
+        * {
+            color: white;
+            text-decoration: none;
+            
+        }
+
+        .loader {
+            position: relative;
+            width: 160px;
+            height: 160px;
+            margin-left: 30%;
+            border: 4px solid #282828;
+            overflow: hidden;
+            border-radius: 50%;
+            box-shadow: -5px -5px 5px rgba(255, 255, 255, 0.1),
+                10px 10px 10px rgba(0, 0, 0, 0.4),
+                inset -5px -5px 5px rgba(255, 255, 255, 0.2),
+                inset 10px 10px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .loader:before {
+            content: "";
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            right: 25px;
+            bottom: 25px;
+            z-index: 10;
+            background: #212121;
+            border-radius: 50%;
+            border: 2px solid #292929;
+            box-shadow: inset -2px -2px 5px rgba(255, 255, 255, 0.2),
+                inset 3px 3px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .loader span {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-image: linear-gradient(-225deg,
+                    black 0%,
+                    yellow 50%,
+                    blue 100%);
+            filter: blur(20px);
+            z-index: -1;
+            animation: animate 0.5s linear infinite;
+        }
+
+        @keyframes animate {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .e-card {
+            margin: 100px auto;
+            background: transparent;
+            box-shadow: 0px 8px 28px -9px rgba(0, 0, 0, 0.45);
+            position: relative;
+            width: 240px;
+            height: 50vh;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .wave {
+            position: absolute;
+            width: 540px;
+            height: 50vh;
+            opacity: 0.6;
+            left: 0;
+            top: 0;
+            margin-left: -50%;
+            margin-top: -70%;
+            background: linear-gradient(744deg, #af40ff, #5b42f3 60%, #00ddeb);
+        }
+
+        .infotop {
+            text-align: center;
+            font-size: 20px;
+            position: absolute;
+            top: 5.6em;
+            left: 0;
+            right: 0;
+            color: rgb(255, 255, 255);
+            font-weight: 600;
+        }
+
+        .playing .wave {
+            border-radius: 40%;
+            animation: wave 3000ms infinite linear;
+        }
+
+        .wave {
+            border-radius: 40%;
+            animation: wave 55s infinite linear;
+        }
+
+        .playing .wave:nth-child(2) {
+            animation-duration: 4000ms;
+        }
+
+        .wave:nth-child(2) {
+            animation-duration: 50s;
+        }
+
+        .playing .wave:nth-child(3) {
+            animation-duration: 5000ms;
+        }
+
+        .wave:nth-child(3) {
+            animation-duration: 45s;
+        }
+
+        @keyframes wave {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .card {
+            position: relative;
+            width: 190px;
+            height: 254px;
+            transition: 0.5s;
+            cursor: pointer;
+            background: linear-gradient(purple, blue, black);
+            margin-left: 20%;
+        }
+
+        .card:hover {
+            transform: translateY(-20px);
+        }
+
+        .card::before {
+            content: '';
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: linear-gradient(45deg, #ffbc00, #ff0058);
+            border-radius: 1.2em;
+        }
+
+        .card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #ffbc00, #ff0058);
+            filter: blur(30px);
+        }
+
+        .card span {
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            right: 6px;
+            bottom: 6px;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 2;
+            border-radius: 1em;
+        }
+
+        .card span::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .card .content {
+            position: relative;
+            padding: 10px;
+            z-index: 10;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.5em;
+        }
+
+        /*  */
+        /* From Uiverse.io by kamehame-ha */
+        .cards {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .cards .red {
+            background-color: #f43f5e;
+        }
+
+        .cards .blue {
+            background-color: #3b82f6;
+        }
+
+        .cards .green {
+            background-color: #22c55e;
+        }
+
+        .cards .yellow {
+            background-color: #c7ad2a;
+        }
+
+        .cards .purple {
+            background-color: #229cc5;
+        }
+
+        .cards .cardd {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            margin-left: 20%;
+            height: 100px;
+            width: 250px;
+            border-radius: 10px;
+            color: white;
+            cursor: pointer;
+            transition: 400ms;
+        }
+
+        .cards .cardd p.tip {
+            font-size: 1em;
+            font-weight: 700;
+        }
+
+        .cards .cardd p.second-text {
+            font-size: .7em;
+        }
+
+        .cards .cardd:hover {
+            transform: scale(1.1, 1.1);
+        }
+
+        .cards:hover>.cardd:not(:hover) {
+            filter: blur(10px);
+            transform: scale(0.9, 0.9);
+        }
+
+        /* crousel part */
+        .c {
+            height: auto;
+        }
+
+        .carousel-cell {
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            width: 100%;
+            height: 80vh;
+        }
+
+        .c1 {
+            background-image: url(https://plus.unsplash.com/premium_photo-1685086785054-d047cdc0e525?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+
+        }
+
+        .c2 {
+            background-image: url(https://images.unsplash.com/photo-1654618977232-a6c6dea9d1e8?q=80&w=1372&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+        }
+
+        .c3 {
+            background-image: url(https://plus.unsplash.com/premium_photo-1678566154673-a728037f3f00?q=80&w=1404&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+        }
+
+        /*  */
+        /*  */
+        /* From Uiverse.io by eslam-hany */
+        .book {
+            position: relative;
+            border-radius: 10px;
+            width: 70%;
+            margin-left: 10%;
+            height: 300px;
+            background-color: purple;
+            -webkit-box-shadow: 1px 1px 12px #000;
+            box-shadow: 1px 1px 12px #000;
+            -webkit-transform: preserve-3d;
+            -ms-transform: preserve-3d;
+            transform: preserve-3d;
+            -webkit-perspective: 2000px;
+            perspective: 2000px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            /* display: flex; */
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            color: #000;
+        }
+
+        .cover {
+            top: 0;
+            position: absolute;
+            background-color:rgb(182, 86, 182);
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            cursor: pointer;
+            -webkit-transition: all 0.5s;
+            transition: all 0.5s;
+            -webkit-transform-origin: 0;
+            -ms-transform-origin: 0;
+            transform-origin: 0;
+            -webkit-box-shadow: 1px 1px 12px #000;
+            box-shadow: 1px 1px 12px #000;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+        }
+
+        .book:hover .cover {
+            -webkit-transition: all 0.5s;
+            transition: all 0.5s;
+            -webkit-transform: rotatey(-80deg);
+            -ms-transform: rotatey(-80deg);
+            transform: rotatey(-80deg);
+        }
+
+        p {
+            font-size: 20px;
+            font-weight: bolder;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <div class="row a">
+            <div class="col-md-6">
+                <h3 style="color: white; margin-top: 4rem;">
+                    <marquee behavior="" direction="">Welcome here</marquee>
+                </h3>
+                <h5 style="color: white; margin-top: 2rem;">Meet here Abdul Ahad Your web designer and website
+                    builder...</h5>
+            </div>
+            <div class="col-md-6 ahad"></div>
+
+        </div>
+    </div><br><br>
+
+    <div data-aos="zoom-out-right">
+        <h3>Read my Resume</h3>
+    </div><br><br>
+
+    <div class="loader">
+        <span></span>
+    </div>
+
+    <div data-aos="zoom-out-right">
+
+        <div class="e-card playing">
+            <div class="image"></div>
+
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+
+
+            <div class="infotop">
+                Matric <br> From Swot clg. <br>
+                Got 98% Marks
+                <br>
+            </div>
+        </div>
+    </div>
+    <div data-aos="zoom-out-right">
+
+        <div class="e-card playing">
+            <div class="image"></div>
+
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+
+
+            <div class="infotop">
+                Intermediate <br> From Swot clg. <br>
+                Got 80% Marks
+                <br>
+            </div>
+        </div>
+    </div>
+    <div data-aos="zoom-out-right">
+
+        <div class="e-card playing">
+            <div class="image"></div>
+
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+
+
+            <div class="infotop">
+                Now In Bs Artificial Intelligence(Continue...)
+                <br>
+            </div>
+        </div>
+    </div>
+
+    <!-- Web skills -->
+    <div data-aos="zoom-out-right">
+
+        <div class="card">
+            <span></span>
+            <div class="content">
+                <h3>My web skills</h3>
+            </div>
+        </div>
+    </div>
+    <br>
+
+
+
+    <div class="cards">
+        <div class="cardd red">
+            <p class="tip">React <br>About: 40%</p>
+        </div>
+        <div class="cardd blue">
+            <p class="tip">Html <br>About: 93%</p>
+        </div>
+        <div class="cardd green">
+            <p class="tip">CSS <br>About: 78%</p>
+        </div>
+        <div class="cardd yellow">
+            <p class="tip">Java script <br> <br>About: 62%</p>
+        </div>
+        <div class="cardd purple">
+            <p class="tip">Bootstrap <br>About: 78%</p>
+        </div>
+    </div>
+
+    <br>
+    <h3>Inspire from us...</h3>
+    <!-- crousel part -->
+
+    <div class="main-carousel c">
+        <div class="carousel-cell c1"></div>
+        <div class="carousel-cell c2"></div>
+        <div class="carousel-cell c3"></div>
+    </div>
+
+    <!-- Get in touch -->
+
+    <br>
+    <h3>Get in touch :)</h3>
+
+    <div class="book">
+        <p>
+            <a href="https://mail.google.com/mail/u/0/#inbox?compose=GTvVlcSGLBwhzwMmLqktLfMJRkbWdtCbSxPdprtlmwVRFCZnkBWGTlWZRZVXjkccQCVXjHXkPggKk">ahad83392@gamail.com</a> <br>
+
+            <a href="https://www.facebook.com/profile.php?id=100082899504894"><i class="fa-brands fa-facebook"></i>Abdul Ahad</a> <br>
+
+             <a href=""><i class="fa-solid fa-phone"></i>Phone +92 306 3618697</a> 
+
+
+        </p>
+        
+ 
+        
+        <div class="cover">
+            <p>Hover Me</p>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        AOS.init();
+    </script>
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    <script>
+        var elem = document.querySelector('.main-carousel');
+        var flkty = new Flickity(elem, {
+            // options
+            cellAlign: 'left',
+            contain: true,
+            freeScroll: true,
+            pageDots: false,
+            autoPlay: 1500
+        });
+
+        // element argument can be a selector string
+        //   for an individual element
+        var flkty = new Flickity('.main-carousel', {
+            // options
+        });
+    </script>
+
+
+</body>
+
+</html>
